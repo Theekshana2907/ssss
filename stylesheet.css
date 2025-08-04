@@ -24,9 +24,6 @@
 
 
 
-
-
-
 body {
 	/*background-color: #FFDAB9;	*/
 	background-color: #000;
@@ -1330,35 +1327,38 @@ audio {
     }
 
 
+@media only screen and (max-width: 720px) {
+    /* Make balloon images smaller and adjust spacing */
+    .balloons {
+        width: 40px; /* Even smaller for mobile */
+        height: 73px; /* Maintaining aspect ratio */
+        background-size: 40px 73px;
+        opacity: 0.9;
+    }
 
-    /*controlling tablet width*/
-    /*@media only screen and (max-width: 720px){
-    	.container {
-    		-webkit-transform: scale(0.9);
-    	}
-    }*/
+    .balloons h2 {
+        font-size: 20px; /* Smaller font size for mobile */
+    }
 
+    /* Adjust balloon positions with percentage-based layout */
+    #b11, #b1 { left: 5% !important; }
+    #b22, #b2 { left: 20% !important; }
+    #b33, #b3 { left: 35% !important; }
+    #b44, #b4 { left: 50% !important; }
+    #b55, #b5 { left: 65% !important; }
+    #b66, #b6 { left: 80% !important; }
+    #b77, #b7 { left: 95% !important; }
 
-/* Responsive balloon size for tablets */
-@media (max-width: 768px) {
-  .balloons {
-    width: 60px;
-    height: 110px;
-    background-size: 60px 110px;
-  }
-  .balloons h2 {
-    font-size: 30px;
-  }
-}
+    /* Adjust animation bounds for mobile */
+    @keyframes balloons_rotate_one {
+        0% { transform: rotate(15deg); }
+        50% { transform: rotate(-15deg); }
+        100% { transform: rotate(15deg); }
+    }
 
-/* Responsive balloon size for phones */
-@media (max-width: 480px) {
-  .balloons {
-    width: 40px;
-    height: 73px;
-    background-size: 40px 73px;
-  }
-  .balloons h2 {
-    font-size: 18px;
-  }
+    @keyframes balloons_rotate_two {
+        0% { transform: rotate(-15deg); }
+        50% { transform: rotate(15deg); }
+        100% { transform: rotate(-15deg); }
+    }
 }
