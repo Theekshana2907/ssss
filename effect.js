@@ -1,4 +1,3 @@
-
 // ...existing code...
 function flyMessage(id) {
     function animateMsg() {
@@ -35,14 +34,44 @@ $('document').ready(function(){
 		var vw;
 		$(window).resize(function(){
 			 vw = $(window).width()/2;
-			$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
-			$('#b11').animate({top:240, left: vw-350},500);
-			$('#b22').animate({top:240, left: vw-250},500);
-			$('#b33').animate({top:240, left: vw-150},500);
-			$('#b44').animate({top:240, left: vw-50},500);
-			$('#b55').animate({top:240, left: vw+50},500);
-			$('#b66').animate({top:240, left: vw+150},500);
-			$('#b77').animate({top:240, left: vw+250},500);
+    
+    // Check if mobile view
+    if($(window).width() <= 720) {
+        // Adjust random positions for mobile
+        function loopMobile(element) {
+            var randleft = $(window).width() * Math.random() * 0.8; // Keep within 80% of screen width
+            var randtop = $(window).height() * Math.random() * 0.5; // Keep within 50% of screen height
+            $(element).animate({
+                left: randleft,
+                bottom: randtop
+            }, 10000, function(){
+                loopMobile(element);
+            });
+        }
+
+        // Apply mobile animations to each balloon
+        ['#b1','#b2','#b3','#b4','#b5','#b6','#b7'].forEach(function(balloon) {
+            loopMobile(balloon);
+        });
+
+        // Adjust final positions for message
+        $('#b11').animate({top:240, left: '5%'},500);
+        $('#b22').animate({top:240, left: '20%'},500);
+        $('#b33').animate({top:240, left: '35%'},500);
+        $('#b44').animate({top:240, left: '50%'},500);
+        $('#b55').animate({top:240, left: '65%'},500);
+        $('#b66').animate({top:240, left: '80%'},500);
+        $('#b77').animate({top:240, left: '95%'},500);
+    } else {
+        // Original desktop positioning
+        $('#b11').animate({top:240, left: vw-350},500);
+        $('#b22').animate({top:240, left: vw-250},500);
+        $('#b33').animate({top:240, left: vw-150},500);
+        $('#b44').animate({top:240, left: vw-50},500);
+        $('#b55').animate({top:240, left: vw+50},500);
+        $('#b66').animate({top:240, left: vw+150},500);
+        $('#b77').animate({top:240, left: vw+250},500);
+    }
 		});
 
 	$('#turn_on').click(function(){
